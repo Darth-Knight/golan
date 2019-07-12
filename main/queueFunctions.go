@@ -9,7 +9,7 @@ import (
 func pushDataInQueue(key string) (string, error) {
 	log.Println("Pushing key -- ", key, "in Queue")
 
-	conn, err := amqp.Dial("amqp://localhost")
+	conn, err := amqp.Dial("amqp://ykbsznqg:KSZVK1JlGtYgPmmzDI7I9rZfiB1WUEPY@crane.rmq.cloudamqp.com/ykbsznqg")
 	if err != nil {
 		log.Println("Failed to connect to RabbitMQ", err)
 		return "Failed to connect to RabbitMQ", err
