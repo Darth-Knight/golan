@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
@@ -43,8 +44,17 @@ func saveData(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
+func getPort() string {
+	p := os.Getenv("PORT")
+	if p != "" {
+		return ":" + p
+	}
+	return ":3000"
+}
+
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/saveData/", saveData).Methods("POST")
-	log.Fatal(http.ListenAndServe(":1047", router))
+	port := getPort()
+	log.Fatal(http.ListenAndServe(port, router))
 }
